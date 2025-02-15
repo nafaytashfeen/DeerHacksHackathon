@@ -63,13 +63,14 @@ async function signIn(event) {
             if (data.success) {
                 // Reset all the variables
                 errorMessage.style.display = 'none';
-
+               
+                email = '';
                 password = '';
                 // Reset the variables
 
-                sessionStorage.setItem("signed_in", JSON.stringify(true));
-                sessionStorage.setItem("user_email", JSON.stringify(email))
-                email = '';
+                sessionStorage.setItem("username", data.name); // put user data in session storage
+                sessionStorage.setItem("skill_set", JSON.stringify(data.skills));
+                sessionStorage.setItem("signed_in", JSON.stringify(true))
                 window.location.href = '/index.html'
             }
             else {
