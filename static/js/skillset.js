@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.getElementById("submit-button");
-
+    sessionStorage.setItem("signed_in", JSON.stringify(false))
     submitButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent form submission reload
 
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     "skill_set": data.skills
                 }
                 sessionStorage.setItem("user_data", JSON.stringify(user_data)); // put user data in session storage
+                sessionStorage.setItem("signed_in", JSON.stringify(true))
                 window.location.href = "/index.html"; // Redirect to homepage
             } else {
                 alert("Error: " + data.message);
