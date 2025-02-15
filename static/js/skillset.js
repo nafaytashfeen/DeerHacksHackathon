@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const skills = [skill1, skill2, skill3];
 
         // Retrieve stored user data from sessionStorage
-        const userData = JSON.parse(sessionStorage.getItem("user_data"));
+        const userData = JSON.parse(sessionStorage.getItem("user_data_unverified"));
 
         if (!userData) {
             alert("User data not found. Please register again.");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     "username": data.name,
                     "skill_set": data.skills
                 }
-                sessionStorage.setItem("user_data"); // put user data in session storage
+                sessionStorage.setItem("user_data", JSON.stringify(user_data)); // put user data in session storage
                 window.location.href = "/index.html"; // Redirect to homepage
             } else {
                 alert("Error: " + data.message);

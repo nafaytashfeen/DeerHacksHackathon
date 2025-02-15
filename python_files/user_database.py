@@ -131,9 +131,3 @@ if not os.path.exists("user_database.db"):
 # delete_user("diddy")
 # print(read_all_user_data())
 
-
-
-    
-
-
-

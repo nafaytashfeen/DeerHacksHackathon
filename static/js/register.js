@@ -1,5 +1,5 @@
-let first_name = ''
-let last_name = ''
+let full_name = ''
+let username = ''
 let email = ''
 let password = ''
 let confirmed_password = ''
@@ -10,16 +10,16 @@ document.getElementById('f1').addEventListener('input', firstNameInput)
 
 function firstNameInput() {
     var name_input = document.getElementById('f1')
-    first_name = name_input.value
-    console.log(first_name)
+    full_name = name_input.value
+    console.log(full_name)
 }
 
 document.getElementById('f1.2').addEventListener('input', lastNameInput)
 
 function lastNameInput() {
     var lastName_input = document.getElementById('f1.2')
-    last_name = lastName_input.value
-    console.log(last_name)
+    username = lastName_input.value
+    console.log(username)
 }
 
 document.getElementById('f2').addEventListener('input', emailInput)
@@ -70,7 +70,7 @@ async function signUp(event) {
     password_input = '';
     confpass_input = '';
 
-    if (first_name === "" || last_name === "" || email === "" || password === "" || confirmed_password === "") {
+    if (full_name === "" || username === "" || email === "" || password === "" || confirmed_password === "") {
         alert("One or more fields are not filled out")
         password = '';
         confirmed_password = '';
@@ -96,8 +96,8 @@ async function signUp(event) {
         // Now that the user data is stored in JSON format, send user to verification page,
         // but first, store the user_data in sessionStorage
         
-        first_name = ''
-        last_name = ''
+        full_name = ''
+        username = ''
         email = ''
         password = ''
         confirmed_password = ''
