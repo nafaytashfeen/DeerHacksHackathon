@@ -8,9 +8,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
-    
+
     font-family: 'Nunito', sans-serif;
-    
+
 }
 
 a {
@@ -64,7 +64,8 @@ main {
 /* -- Categories Section -- */
 .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Responsive grid */
     gap: 15px;
     margin-bottom: 2rem;
     padding: 10px;
@@ -78,14 +79,17 @@ main {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow */
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .category:hover {
-    background-color: #05a105; /* Change to a more vibrant color */
+    background-color: #05a105;
+    /* Change to a more vibrant color */
     color: white;
-    transform: scale(1.05); /* Slight pop effect */
+    transform: scale(1.05);
+    /* Slight pop effect */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,15 +97,35 @@ main {
 /* -- Search Bar -- */
 .search-bar {
     margin-bottom: 1.5rem;
+    text-align: center;
+    /* Centers the input within the container */
 }
 
 .search-bar input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    display: inline-block;
+    width: 60%;
+    /* Smaller width to make it more compact */
+    max-width: 900px;
+    /* Optional: prevents it from stretching too wide */
+    padding: 0.75rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 9999px;
+    /* Fully rounded corners */
     font-size: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Adds a subtle pop */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+/* Focus effect to make it pop more when typing */
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-color: #2f3e46;
+    /* Use an accent color for a more vibrant focus state */
+}
+
 
 /* Postings Grid */
 .postings {
