@@ -72,3 +72,43 @@
 .post-options-form button:hover {
     background-color: #3d4d54;
 }
+
+.post-image-preview {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Hide the default file input */
+.post-image-upload {
+    display: none;
+}
+
+/* Style the custom choose file button */
+.image-upload-label {
+    display: inline-block;
+    background-color: #2f3e46;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.image-upload-label:hover {
+    background-color: #3d4d54;
+}
+
+/* Hide the image preview by default */
+#image-preview {
+    display: none;
+    margin-top: 1rem;
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+}

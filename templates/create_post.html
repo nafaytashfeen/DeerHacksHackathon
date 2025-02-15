@@ -33,10 +33,10 @@
 
             <!-- Uploadable Image -->
             <div class="image-upload-container">
-                <label for="post-image-upload" class="image-upload-label">Upload Image</label>
+                <label for="post-image-upload" class="image-upload-label">Choose File</label>
                 <input type="file" id="post-image-upload" class="post-image-upload" accept="image/*" />
-                <img id="image-preview" src="" alt="Image Preview" class="post-image" />
-
+                <!-- The preview image is hidden by default -->
+                <img id="image-preview" src="" alt="Image Preview" class="post-image-preview" />
             </div>
 
             <!-- Skills I want to learn -->
@@ -113,20 +113,21 @@
     <footer>
         <p>&copy; 2025 SkillSwap. All rights reserved.</p>
     </footer>
+
     <script>
         document.getElementById('post-image-upload').addEventListener('change', function (event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    // Set the preview image source to the data URL from the file
-                    document.getElementById('image-preview').src = e.target.result;
+                    const preview = document.getElementById('image-preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Reveal the preview image
                 };
                 reader.readAsDataURL(file);
             }
         });
     </script>
-
 </body>
 
 </html>
