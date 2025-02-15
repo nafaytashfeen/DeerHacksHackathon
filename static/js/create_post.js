@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Build the data object to send to the backend
         const postData = {
             title: title,
-            poster: "Alex Johnson", // Static poster name
+            poster: sessionStorage.getItem("username"), // Static poster name
             image: uploadedImageBase64, // The Base64 image data (if any)
             skillsToLearn: skillsToLearn,
             skillsToTeach: skillsToTeach,
