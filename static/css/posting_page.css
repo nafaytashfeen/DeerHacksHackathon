@@ -1,0 +1,176 @@
+/* ===== View Post Page Layout ===== */
+.view-post-page {
+    /* Reuse your container sizing */
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+
+    /* Two-column grid: left (2fr) + right (1fr) */
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Left Column: Post Details */
+.post-left {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    gap: 1rem;
+}
+
+.post-left .post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.post-left .post-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.post-left .post-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.post-left .poster-name {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Similar Postings Section */
+.similar-postings {
+    margin-top: 1rem;
+}
+
+.similar-postings h3 {
+    margin-bottom: 0.75rem;
+}
+
+.similar-postings .postings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 20px;
+}
+
+.similar-post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.similar-post-item {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+}
+
+/* Right Column: Contact Form */
+.post-right {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    height: fit-content;
+    /* Don't stretch the column unnecessarily */
+}
+
+.post-right h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    background-color: #2f3e46;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.contact-form button:hover {
+    background-color: #3d4d54;
+}
+
+.post-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.post-left {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Date styling: positioned at the top right within the .post-left container */
+.post-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Existing post image style (ensuring it isn’t cut off) */
+.post-left .post-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SkillSwap - Create Post</title>
+    <!-- Reuse your main CSS and Google Fonts -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/posting_page.css">
+    <link rel="stylesheet" href="../static/css/create_post.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ===== Header (reused) ===== -->
+    <header>
+        <div class="logo">SkillSwap</div>
+        <nav class="nav-actions">
+            <a href="#">Add Listing</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main class="view-post-page">
+        <!-- Left Column: Post Preview / Editable Content -->
+        <div class="post-left">
+            <!-- Editable Title -->
+            <input type="text" class="editable-title" placeholder="Enter post title..." />
+
+            <!-- Static Poster Name -->
+            <p class="poster-name"><strong>Posted By:</strong> Alex Johnson</p>
+
+            <!-- Uploadable Image -->
+            <div class="image-upload-container">
+                <label for="post-image-upload" class="image-upload-label">Choose File</label>
+                <input type="file" id="post-image-upload" class="post-image-upload" accept="image/*" />
+                <!-- The preview image is hidden by default -->
+                <img id="image-preview" src="" alt="Image Preview" class="post-image-preview" />
+            </div>
+
+            <!-- Skills I want to learn -->
+            <h3>Skills I want to learn:</h3>
+            <textarea class="skills-to-learn" placeholder="Enter skills you want to learn..."></textarea>
+
+            <!-- Skills I can teach -->
+            <h3>Skills I can teach:</h3>
+            <textarea class="skills-to-teach" placeholder="Enter skills you can teach..."></textarea>
+        </div>
+
+        <!-- Right Column: Post Options -->
+        <div class="post-right">
+            <h3>Post Options</h3>
+            <form class="post-options-form">
+                <!-- Dropdown: Skills I want -->
+                <label for="dropdown-want">Skills I want</label>
+                <select id="dropdown-want" name="dropdown-want">
+                    <option value="">Select a skill</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Guitar">Guitar</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Public Speaking">Public Speaking</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Fitness Training">Fitness Training</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Painting">Painting</option>
+                    <option value="Sewing">Sewing</option>
+                    <option value="Writing">Writing</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="Leadership">Leadership</option>
+                </select>
+
+                <!-- Dropdown: Skills I can teach in return -->
+                <label for="dropdown-teach">Skills I can teach in return</label>
+                <select id="dropdown-teach" name="dropdown-teach">
+                    <option value="">Select a skill</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Guitar">Guitar</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Public Speaking">Public Speaking</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Fitness Training">Fitness Training</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Painting">Painting</option>
+                    <option value="Sewing">Sewing</option>
+                    <option value="Writing">Writing</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="Leadership">Leadership</option>
+                </select>
+
+                <button type="submit">Create Post!</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ===== Footer (reused) ===== -->
+    <footer>
+        <p>&copy; 2025 SkillSwap. All rights reserved.</p>
+    </footer>
+
+    <script src="../static/js/create_post.js"></script>
+</body>
+
+</html>

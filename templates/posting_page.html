@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SkillSwap - View Post</title>
+    <!-- Reuse your main CSS and Google Fonts -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/posting_page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ===== Header (reused) ===== -->
+    <header>
+        <div class="logo">SkillSwap</div>
+        <nav class="nav-actions">
+            <a href="#">Add Listing</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main class="view-post-page">
+        <!-- Left Column: Post Details -->
+        <div class="post-left">
+            <!-- Date Uploaded (positioned in the top right) -->
+            <p class="post-date">Posted: July 12, 2025</p>
+
+            <!-- Post Title -->
+            <h2 class="post-title">Requesting Python Lessons</h2>
+
+            <!-- Poster Name -->
+            <p class="poster-name"><strong>Posted By:</strong> Alex Johnson</p>
+
+            <!-- Large Image -->
+            <img src="../static/python-img.jpg" alt="Skill Image" class="post-image" />
+
+            <!-- Description -->
+            <h3>Skills I want to learn</h3>
+            <p class="post-description">
+                I want to learn Python basics, data structures, and even web development.
+                In exchange, I’d love to learn how to cook vegetarian dishes or practice Spanish.
+            </p>
+
+            <h3>Skills I can teach</h3>
+            <p class="post-description">
+                I can teach Python basics, data structures, and web development.
+                In exchange, I’d love to learn how to cook vegetarian dishes or practice Spanish.
+            </p>
+
+            <!-- Similar Postings Section -->
+            <div class="similar-postings">
+                <h3>Similar Postings</h3>
+                <section class="postings">
+                    <!-- Posting 1 -->
+                    <div class="posting">
+                        <!-- Skills at the top -->
+                        <div class="desired-skills">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Cooking</span>
+                            <span class="skill-badge">Guitar</span>
+                        </div>
+                        <!-- Large Picture -->
+                        <img src="../static/Python-logo.png" alt="User's Skill Image" />
+                        <!-- Description -->
+                        <p class="description">
+                            Requesting Python lessons in exchange for Spanish practice. Also looking to improve my
+                            cooking skills.
+                        </p>
+                        <!-- Username at the bottom -->
+                        <div class="footer-info">
+                            <p class="username">Alex Johnson</p>
+                        </div>
+                    </div>
+
+                    <!-- Posting 2 -->
+                    <div class="posting">
+                        <!-- Skills at the top -->
+                        <div class="desired-skills">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Cooking</span>
+                            <span class="skill-badge">Guitar</span>
+                        </div>
+                        <!-- Large Picture -->
+                        <img src="image.png" alt="User's Skill Image" />
+                        <!-- Description -->
+                        <p class="description">
+                            Requesting Python lessons in exchange for Spanish practice. Also looking to improve my
+                            cooking skills.
+                        </p>
+                        <!-- Username at the bottom -->
+                        <div class="footer-info">
+                            <p class="username">Alex Johnson</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="post-right">
+            <h3>Contact Poster</h3>
+            <form class="contact-form">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" />
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ===== Footer (reused) ===== -->
+    <footer>
+        <p>&copy; 2025 SkillSwap. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

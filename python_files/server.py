@@ -19,6 +19,7 @@ def home2():
 def homepage():
     return render_template("homepage.html")
 
+<<<<<<< HEAD
 # this isnt the correct code, just correct header just as a template
 @app.route('/index', methods = ['POST'])
 def winner_winner():
@@ -64,6 +65,11 @@ def handle_signup():
     else:
         return jsonify({"message": dumped_data[1], 'success': False, 'name': None, "skills": None})
     
+=======
+@app.route("/create_post.html")
+def create_post():
+    return render_template("create_post.html")
+>>>>>>> main
 
 
 if __name__ == '__main__':
