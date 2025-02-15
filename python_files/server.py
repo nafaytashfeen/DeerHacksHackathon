@@ -33,6 +33,10 @@ def signin():
 def homepage():
     return render_template("homepage.html")
 
+@app.route("/create_post.html")
+def create_post():
+    return render_template("create_post.html")
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
