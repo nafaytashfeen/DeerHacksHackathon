@@ -8,6 +8,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
+    
+    font-family: 'Nunito', sans-serif;
+    
 }
 
 a {
@@ -58,27 +61,34 @@ main {
     padding: 0 1rem;
 }
 
-/* -- Common Categories Section -- */
+/* -- Categories Section -- */
 .categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    margin-bottom: 2rem;
+    padding: 10px;
 }
 
 .category {
     background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 4px;
-    flex: 1 0 150px;
+    padding: 1.2rem;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .category:hover {
-    background-color: #f1f1f1;
+    background-color: #05a105; /* Change to a more vibrant color */
+    color: white;
+    transform: scale(1.05); /* Slight pop effect */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
+
 
 /* -- Search Bar -- */
 .search-bar {
