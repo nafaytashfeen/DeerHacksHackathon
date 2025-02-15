@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     "username": data.name,
                     "skill_set": data.skills
                 }
-                sessionStorage.setItem("user_data", JSON.stringify(user_data)); // put user data in session storage
+                sessionStorage.setItem("username", user_data.username); // put user data in session storage
+                sessionStorage.setItem("skill_set", JSON.stringify(user_data.skill_set));
                 sessionStorage.setItem("signed_in", JSON.stringify(true))
                 window.location.href = "/index.html"; // Redirect to homepage
             } else {
