@@ -127,71 +127,92 @@ main {
 }
 
 
-/* Postings Grid */
+/* Container for all postings */
 .postings {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 postings per row, adjust as needed */
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
     margin: auto;
-}
-
-.postings {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 postings per row */
-    gap: 1.5rem;
-}
-
-.posting {
-    background-color: #ffffff;
+  }
+  
+  /* Individual Posting Card */
+  .posting {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-
-    min-height: 350px;
-
-}
-
-.posting:hover {
-    transform: translateY(-5px);
-    transform: scale(1.03)
-}
-
-/* Image styling */
-.posting img {
-    width: 100%;
-    height: 200px; /* Adjust as needed */
-    object-fit: contain; /* Ensures the full image is visible */
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
-}
-
-/* User name styling */
-.posting .user-name {
-    font-weight: bold;
-    margin-top: 0.5rem;
-}
-
-/* Description styling */
-.posting .description {
+    min-height: 320px; /* Slightly shorter than before */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center top content (skills, image) */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  /* Hover enlarge effect */
+  .posting:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Skills at the top */
+  .desired-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .skill-badge {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 16px;
     font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.3rem;
-}
-
-/* Postings Grid */
-.postings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-}
+  }
+  
+  /* Large Picture */
+  .posting img {
+    width: 80%;
+    max-height: 180px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+  
+  /* Description (left-aligned) */
+  .description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+    width: 100%;
+    text-align: left; /* left-aligned */
+    margin-bottom: 1rem;
+  }
+  
+  /* Divider between description and user info */
+  .divider {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  /* Footer Info (left-aligned) */
+  .footer-info {
+    width: 100%;
+    text-align: left; /* left-aligned */
+    margin-top: auto; /* pushes this section down if there's space */
+  }
+  
+  /* Username at the bottom */
+  .username {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
+  
 
 /* ===== Footer ===== */
 footer {
