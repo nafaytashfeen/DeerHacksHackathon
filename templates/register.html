@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #5FA3FA, #C68BF8);
+    }
+</style>
+</head>
+
+<body>
+
+<h1 style="color: whitesmoke;font-weight: bold; font-family: Nunito;">
+    <a href="../Homepage/homepage.html" style="color: inherit; text-decoration: None;">SkillSwap</a>
+</h1>
+
+<!-- The Actual Form -->
+<div class="form-box">
+    <form class="form">
+        <span class="title">Sign up</span>
+        <span class="subtitle">Create a free account with your email.</span>
+        <div class="form-container">
+            <input type="text" class="input" placeholder="Full Name" id="f1" required="required">
+            <input type="text" class="input" placeholder="Username" id="f1.2" required="required">
+            <input type="email" class="input" placeholder="Email" id="f2">
+            <input type="text" class="input" placeholder="Password" id="f3" autocomplete="off" required="required">
+            <input type="text" class="input" placeholder="Confirm Password" id="f4" autocomplete="off" required="required">
+            <span class="error-message" id="error-message">Passwords do not match</span>
+        </div>
+        <button id="sign-up-button" style="font-family: Nunito;">Sign up</button>
+    </form>
+    <div class="form-section">
+        <p>By signing up, you agree with our <a href="">Terms & conditions</a> and <a href="">Privacy agreement</a></p>
+        <p>Already have an account? <a href="signin.html">Log in</a> </p>
+    </div>
+</div>
+
+<script src="register.js"></script>
+</body>
+
+</html>

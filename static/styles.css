@@ -5,9 +5,8 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
     color: #333;
+    background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
 
     font-family: 'Nunito', sans-serif;
 
@@ -85,7 +84,7 @@ main {
 }
 
 .category:hover {
-    background-color: #05a105;
+    background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
     /* Change to a more vibrant color */
     color: white;
     transform: scale(1.05);
