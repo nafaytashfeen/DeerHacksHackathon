@@ -20,7 +20,7 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-}
+  }
 .form-box {
     display: flex;
     flex-direction: column;

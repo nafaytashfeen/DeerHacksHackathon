@@ -104,7 +104,7 @@ async function signUp(event) {
         // Reset all the variables
 
         sessionStorage.setItem('user_data_unverified', JSON.stringify(user));
-        window.location.href = 'verification.html';
+        window.location.href = '/skillset.html';
     }
 }
 
