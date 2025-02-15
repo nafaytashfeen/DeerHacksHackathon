@@ -21,6 +21,17 @@ def winner_winner():
     update_stats({'wins': wins, 'name': data['name'], 'wpm': wpm})
     return jsonify({'message': 'congratulations, stats updated'})
 
+@app.route('/register.html')
+def register():
+    return render_template("register.html")
+
+@app.route('/signin.html')
+def signin():
+    return render_template("signin.html")
+
+@app.route("/homepage.html")
+def homepage():
+    return render_template("homepage.html")
 
 
 if __name__ == '__main__':
