@@ -15,18 +15,32 @@ def home():
 def home2():
     return render_template("index.html")
 
+@app.route("/homepage.html")
+def homepage():
+    return render_template("homepage.html")
+
 # this isnt the correct code, just correct header just as a template
 @app.route('/index', methods = ['POST'])
 def winner_winner():
     pass
 
+@app.route("/signin.html")
+def signin():
+    return render_template("signin.html")
+
+@app.route("/register.html")
+def register():
+    return render_template("register.html")
+
 @app.route("/signin", methods = ['POST'])
 def handle_login():
+    print("hello")
     # check_info() will return a number from 1-3
     # returning 1 means email not found
     # returning 2 means password doesn't match
     # returning 3 means everything is good
     data = request.json
+    print("data: "+ str(data))
     result = check_info(data)
     if result[0] == 1:
         return jsonify({"message": "This Email is not valid", 'success': False, 'name': None})

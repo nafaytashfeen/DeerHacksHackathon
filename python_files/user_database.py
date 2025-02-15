@@ -118,11 +118,11 @@ data2 = {"username": "diddy", "email": "123@gmail.com", "password": "teehee", "s
 if not os.path.exists("user_database.db"):
     create_database()
 
-print(insert_user(data))
-print(insert_user(data2))
+# print(insert_user(data))
+# print(insert_user(data2))
 
-l = read_user_data("diddy")
-print(l)
+# l = read_user_data("diddy")
+# print(l)
 
 
 

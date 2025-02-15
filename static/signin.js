@@ -47,8 +47,10 @@ async function signIn(event) {
         // Now that the user data is stored in JSON format, send it to backend 
         // for credential lookup
 
+        console.log("hEYO");
         try {
-            const response = await fetch('https://backendhosting-flighter.onrender.com/login', {
+            console.log("hope this works");
+            const response = await fetch('/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +70,7 @@ async function signIn(event) {
                 sessionStorage.setItem("signed_in", JSON.stringify(true));
                 sessionStorage.setItem("user_email", JSON.stringify(email))
                 email = '';
-                window.location.href = '../Homepage/homepage.html'
+                window.location.href = '/index.html'
             }
             else {
                 errorMessage.style.display = 'inline';
