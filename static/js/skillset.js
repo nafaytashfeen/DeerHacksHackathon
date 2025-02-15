@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userData.skills = skills;
 
         // Send data to backend
-        fetch("http://127.0.0.1:5001/register", {
+        fetch("/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,7 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert("Registration successful!");
+                alert(data.message);
+                user_data = {
+                    "username": data.name,
+                    "skill_set": data.skills
+                }
                 sessionStorage.setItem("user_data"); // put user data in session storage
                 window.location.href = "/index.html"; // Redirect to homepage
             } else {
