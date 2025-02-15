@@ -130,7 +130,7 @@ main {
 /* Container for all postings */
 .postings {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 postings per row, adjust as needed */
+    grid-template-columns: repeat(4, 1fr); /* 4 postings per row */
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
@@ -143,20 +143,19 @@ main {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    min-height: 320px; /* Slightly shorter than before */
+    min-height: 320px; /* Slightly shorter */
     display: flex;
     flex-direction: column;
     align-items: center; /* Center top content (skills, image) */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
   
-  /* Hover enlarge effect */
   .posting:hover {
     transform: scale(1.03);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   
-  /* Skills at the top */
+  /* Skills at the top (unchanged) */
   .desired-skills {
     display: flex;
     flex-wrap: wrap;
@@ -173,7 +172,7 @@ main {
     font-size: 0.9rem;
   }
   
-  /* Large Picture */
+  /* Large Picture (unchanged) */
   .posting img {
     width: 80%;
     max-height: 180px;
@@ -182,36 +181,47 @@ main {
     border-radius: 4px;
   }
   
-  /* Description (left-aligned) */
+  /* Description (smaller, left-aligned) */
   .description {
-    font-size: 0.95rem;
+    font-size: 0.85rem; /* Smaller text */
     color: #555;
     line-height: 1.4;
     width: 100%;
-    text-align: left; /* left-aligned */
+    text-align: left;
     margin-bottom: 1rem;
   }
   
-  /* Divider between description and user info */
+  /* Divider between description and footer */
   .divider {
     width: 100%;
     border-bottom: 1px solid #ddd;
     margin-bottom: 1rem;
   }
   
-  /* Footer Info (left-aligned) */
+  /* Footer Info: name + posted date on one line */
   .footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    text-align: left; /* left-aligned */
-    margin-top: auto; /* pushes this section down if there's space */
+    margin-top: auto; /* Pushes this row to the bottom if extra space */
   }
   
-  /* Username at the bottom */
+  /* Username (left side) */
   .username {
     font-weight: 600;
     font-size: 1rem;
     color: #333;
+    margin: 0; /* Remove default paragraph margins */
   }
+  
+  /* Posted date (right side) */
+  .post-date {
+    font-size: 0.8rem;
+    color: #999;
+    margin: 0;
+  }
+  
   
 
 /* ===== Footer ===== */
