@@ -2,12 +2,12 @@ from flask import Flask, request, render_template, jsonify
 import requests
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 
 @app.route('/')
 def home():
-    return render_template("../index.html")
+    return render_template("index.html")
 
 # this isnt the correct code, just correct header just as a template
 @app.route('/index', methods = ['POST'])
