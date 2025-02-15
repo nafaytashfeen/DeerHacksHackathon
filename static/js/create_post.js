@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
             title: title,
             poster: "Alex Johnson", // Static poster name
             image: uploadedImageBase64, // The Base64 image data (if any)
-            skillsToLearn: skillsToLearn,
+            skillsToLearn: skillsToLearn,  
             skillsToTeach: skillsToTeach,
-            desiredSkill: dropdownWant,
-            teachSkill: dropdownTeach,
+            desiredSkill: dropdownWant, // category
+            teachSkill: dropdownTeach, // tag
             // Additional fields (e.g., timestamp) can be added here as needed
         };
 
