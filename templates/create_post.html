@@ -114,20 +114,7 @@
         <p>&copy; 2025 SkillSwap. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.getElementById('post-image-upload').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const preview = document.getElementById('image-preview');
-                    preview.src = e.target.result;
-                    preview.style.display = 'block'; // Reveal the preview image
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
+    <script src="../static/js/create_post.js"></script>
 </body>
 
 </html>
