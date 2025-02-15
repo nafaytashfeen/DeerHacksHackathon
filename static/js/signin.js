@@ -19,13 +19,12 @@ function passwordInput() {
 }
 
 // Signin button logic
-
 document.getElementById('sign-in-button').addEventListener('click', signIn)
 
 async function signIn(event) {
     event.preventDefault(); // Prevent the form from submitting and reloading the page
     const errorMessage = document.getElementById('error-message');
-    
+
     var password_input = document.getElementById('f2')
     password = password_input.value
     // Grab the password and reset the input var
@@ -47,7 +46,6 @@ async function signIn(event) {
         // Now that the user data is stored in JSON format, send it to backend 
         // for credential lookup
 
-        console.log("hEYO");
         try {
             console.log("hope this works");
             const response = await fetch('/signin', {
@@ -59,7 +57,7 @@ async function signIn(event) {
             });
             // Send to database and try to login user
             const data = await response.json();
-        
+
             if (data.success) {
                 // Reset all the variables
                 errorMessage.style.display = 'none';
