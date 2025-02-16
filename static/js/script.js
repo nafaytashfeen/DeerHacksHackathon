@@ -158,6 +158,13 @@ function displayResults(results) {
                 </div>
             `;
 
+                        
+            // Attach click listener immediately after creating the element
+            postElement.addEventListener("click", function () {
+                const postId = this.getAttribute("data-post-id");
+                window.location.href = `posting_page.html?id=${postId}`;
+            });
+
             postingsSection.appendChild(postElement);
         });
 
