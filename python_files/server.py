@@ -106,10 +106,9 @@ def create_post():
 def skillset():
     return render_template("skillset.html")
 
-@app.route("/index")
+@app.route("/search_results", methods=["POST"])
 def handle_search():
     data = request.json
-    print(search(data["search"], data["skill_set"]))
 
     if not(data["search"] and data["skill_set"]):
         return jsonify({"data": [], "success": False})
