@@ -112,7 +112,7 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5"></textarea>
 
-                <button type="submit">Send Message</button>
+                <button type="button" onclick="handleClick(event)">Send Message</button>
             </form>
         </div>
     </main>
@@ -121,6 +121,14 @@
     <footer>
         <p>&copy; 2025 SkillSwap. All rights reserved.</p>
     </footer>
+
+    <script>
+        function handleClick() {
+          event.preventDefault();
+          alert("Contact established!");
+          window.location.href = "/index.html";
+        }
+      </script>
 
     <script src="../static/js/posting_page.js"></script>
 </body>
