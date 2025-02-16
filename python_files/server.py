@@ -41,7 +41,6 @@ def handle_login():
     # returning 2 means password doesn't match
     # returning 3 means everything is good
     data = request.json
-    print("data: "+ str(data))
     result = check_info(data)
     if result[0] == 1:
         return jsonify({"message": "This Email is not valid", 'success': False, 'name': None})
@@ -86,14 +85,15 @@ def create_post():
 def skillset():
     return render_template("skillset.html")
 
-@app.route("/index")
+@app.route("/search_results", methods=["POST"])
 def handle_search():
     data = request.json
+    print(search(data["search"], data["skill_set"]))
 
     if not(data["search"] and data["skill_set"]):
-        return jsonify({"data": []})
+        return jsonify({"data": [], "success": False})
 
-    return jsonify({"data": search(data["search"], data["skill_set"])})
+    return jsonify({"data": search(data["search"], data["skill_set"]), "success": True})
 
     
 

@@ -191,10 +191,3 @@ sample_data_list = [
 
 
 create_post_database()
-# for i in sample_data_list:
-#     insert_posting(i)
-
-
-# for i in read_all_posting_data():
-#     print(i)
-print(search("Python", ["node.js", "ai", "gaming"]))

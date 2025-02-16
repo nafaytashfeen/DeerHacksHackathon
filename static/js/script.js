@@ -40,39 +40,44 @@ document.getElementById("search-bar").addEventListener("keydown", function(event
     }
 });
 
-function get_results(){
+async function get_results(){
     let search_value = document.querySelector("#search-bar input").value;
     if (search_value === "" || search_value === " "){
         alert("Please enter a skill you want to learn");
+        return; // Prevent further execution if the search value is empty
     }
+
     let skill_set = JSON.parse(sessionStorage.getItem("skill_set"));
 
-    const data = {
+    const search_data = {
         "search": search_value,
         "skill_set": skill_set
-    }
+    };
 
-    fetch("/search_results", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const response = await fetch("/search_results", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(search_data)
+        });
+
+        const data = await response.json();
         if (data.success) {
-            return data;
+            console.log(data["data"])
+            return data["data"]; // Return the actual data to be used later
         } else {
             alert("Error: " + data.message);
+            return []; // Return empty array in case of error
         }
-    })
-
-    .catch(error => {
+    } catch (error) {
         console.error("Error:", error);
         alert("Something went wrong. Please try again.");
-    });
+        return []; // Return empty array in case of error
+    }
 }
+
 
 /**
  * A function that displays the posting divs for the results
@@ -82,22 +87,26 @@ function displayResults(results){
     const postingsSection = document.querySelector(".postings");
     postingsSection.innerHTML = ""; // Clear previous results
 
-    results.forEach(result => {
-        const postingDiv = document.createElement("div");
-        postingDiv.classList.add("posting");
+    if (Array.isArray(results)) {
 
-        postingDiv.innerHTML = `
-            <div class="desired-skills">
-                <span class="skill-badge">${result.skills_being_sold}</span>
-            </div>
-            <h3 class="posting-title">${result.title}</h3>
-            <img src="data:image/png;base64,${result.image}" alt="./static/images/skills.webp" />
-            <p class="description">${result.descript_teach}</p>
-            <div class="footer-info">
-                <p class="username">${result.postOwner}</p>
-            </div>
-        `;
+        results.forEach(result => {
+            const postingDiv = document.createElement("div");
+            postingDiv.classList.add("posting");
 
-        postingsSection.appendChild(postingDiv);
-    });
+            postingDiv.innerHTML = `
+                <div class="desired-skills">
+                    <span class="skill-badge">${result.skills_being_sold}</span>
+                </div>
+                <h3 class="posting-title">${result.title}</h3>
+                <img src="data:image/png;base64,${result.image}" alt="./static/images/skills.webp" />
+                <p class="description">${result.descript_teach}</p>
+                <div class="footer-info">
+                    <p class="username">${result.postOwner}</p>
+                </div>
+            `;
+
+            postingsSection.appendChild(postingDiv);
+        });
+
+    }
 }
