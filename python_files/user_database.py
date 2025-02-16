@@ -4,11 +4,11 @@ import os
 from password_hash import hash_password, verify_password
 
 
-def create_database():
+def create_user_database():
     connection = sqlite3.connect('user_database.db')
     cursor = connection.cursor()
     cursor.execute(
-        ''' CREATE table sample(
+        ''' CREATE table IF NOT EXISTS sample(
         username VARCHAR(50) PRIMARY KEY,
         email VARCHAR(50) UNIQUE,
         password VARCHAR(50),
@@ -115,8 +115,7 @@ data = {"username": "diddy", "email": "123@gmail.com", "password": "teehee", "sk
 
 data2 = {"username": "diddy", "email": "123@gmail.com", "password": "teehee", "skills": ["python", "english"]}
 
-if not os.path.exists("user_database.db"):
-    create_database()
+create_user_database()
 
 # print(insert_user(data))
 # print(insert_user(data2))
