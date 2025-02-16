@@ -31,7 +31,7 @@ def insert_posting(data):
     """
     connection = sqlite3.connect("post_database.db")
     cursor = connection.cursor()
-    postId = data['postId'] #string 'postId' is a key in the json
+    # post id is auto inserted
     postOwner = data['postOwener'] #string 'postOwner is a kew in the json'
     title = data["title"]
     skills_being_sold = data["skills_being_sold"]
@@ -41,10 +41,10 @@ def insert_posting(data):
     current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     image = data["image"]
 
-    if not(postId and postOwner and title and skills_being_sold and skills_wanted and descriptLearn and descriptTeach and current_date):
+    if not(postOwner and title and skills_being_sold and skills_wanted and descriptLearn and descriptTeach and current_date):
         return (False, "Invalid credentials")
     try:
-        cursor.execute("INSERT INTO postings VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (postId, postOwner, title, skills_being_sold, skills_wanted, descriptLearn, descriptTeach, current_date, image))
+        cursor.execute("INSERT INTO postings VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)", (postOwner, title, skills_being_sold, skills_wanted, descriptLearn, descriptTeach, current_date, image))
         connection.commit()
         return (True, "success")
     except sqlite3.IntegrityError as e:
