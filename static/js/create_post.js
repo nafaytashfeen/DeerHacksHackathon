@@ -11,6 +11,26 @@ document.getElementById('post-image-upload').addEventListener('change', function
     }
 });
 
+// this displays "signed in as {username}" in the navbar
+document.addEventListener("DOMContentLoaded", () => {
+    // Retrieve username from sessionStorage, default to "Guest"
+    const username = sessionStorage.getItem("username") || "Guest";
+
+    // Insert "Signed in as {username}" text in the header
+    const signedInText = document.getElementById("signed-in-text");
+    if (signedInText) {
+        signedInText.textContent = `Signed in as ${username}`;
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Retrieve username from sessionStorage
+    const username = sessionStorage.getItem("username") || "Default";
+    
+    // Set the text content of the poster-name element
+    document.getElementById("poster-name").innerHTML = `<strong>Posted By:</strong> ${username}`;
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // Variable to hold the Base64-encoded image data
     let uploadedImageBase64 = "";

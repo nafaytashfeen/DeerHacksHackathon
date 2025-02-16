@@ -12,6 +12,14 @@ body {
 
 }
 
+.signed-in-text {
+  font-size: 14px;
+  color: white;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+
 a {
     text-decoration: none;
     color: inherit;
@@ -51,6 +59,7 @@ header {
 
 .nav-actions a:hover {
     background-color: #3d4d54;
+    transform: scale(0.98);
 }
 
 /* ===== Main Content ===== */
@@ -81,6 +90,8 @@ main {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     /* Stronger shadow */
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
 }
 
 .category:hover {
@@ -97,6 +108,7 @@ main {
 .search-bar {
     margin-bottom: 1.5rem;
     text-align: center;
+    box-shadow: #333;
     /* Centers the input within the container */
 }
 
@@ -138,7 +150,7 @@ main {
   
   /* Individual Posting Card */
   .posting {
-    background-color: #fff;
+    background: #D9E8FF;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem;
@@ -170,12 +182,19 @@ main {
     border-radius: 16px;
     font-size: 0.9rem;
   }
-  
+
+  .posting-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 2px;
+  }
+
   /* Large Picture (unchanged) */
   .posting img {
     width: 80%;
     max-height: 180px;
-    object-fit: contain;
+    object-fit: cover;
     margin-bottom: 1rem;
     border-radius: 4px;
   }
