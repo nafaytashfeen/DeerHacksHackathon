@@ -1,131 +1,142 @@
 /* Basic Reset & Global Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: linear-gradient(135deg, #8EC5FC, #E0C3FC); /* Soft gradient background */
-    
-    margin: 0;
-    background-color: #f9f9f9;
-    color: #333;
-    
-    font-family: 'Nunito', sans-serif;
-  }
-  
-  /* Header / Navigation */
-  .site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    background-color: #fff; /* White background for header */
-  }
-  
-  .logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  nav a:hover {
-    color: #007BFF;
-  }
-  
-  .signup-btn {
-    background-color: #007BFF;
-    color: #fff !important;
-    padding: 8px 16px;
-    border-radius: 4px;
-  }
-  
-  /* Hero Section */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
+  /* Soft gradient background */
+
+  margin: 0;
+  background-color: #f9f9f9;
+  color: #333;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Header / Navigation */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: #fff;
+  /* White background for header */
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #007BFF;
+}
+
+.signup-btn {
+  background-color: #007BFF;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 60px 40px;
+  color: #fff;
+  /* White text on the gradient */
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+/* CTA Buttons in Hero */
+.cta-buttons a {
+  text-decoration: none;
+  /* Removes underline */
+
+  display: inline-block;
+  /* Ensures button-like behavior */
+  padding: 10px 20px;
+  /* Adjust padding to match button style */
+  border-radius: 5px;
+  /* Keeps rounded corners */
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Primary = Log In button */
+.btn-primary {
+  background-color: #fff;
+  color: #333
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+}
+
+/* Secondary = Sign Up button */
+.btn-secondary {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.03);
+}
+
+/* Hero Image */
+.hero-image img {
+  width: 400px;
+  /* Adjust as needed */
+  max-width: 100%;
+  /* Responsive */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
   .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 60px 40px;
-    color: #fff; /* White text on the gradient */
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .hero-content {
-    max-width: 500px;
+
+  .hero-image {
+    margin-top: 30px;
   }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    line-height: 1.4;
-  }
-  
-  /* CTA Buttons in Hero */
-  .cta-buttons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .btn-primary,
-  .btn-secondary {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.1s ease-in-out;
-  }
-  
-  /* Primary = Log In button */
-  .btn-primary {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .btn-primary:hover {
-    transform: scale(1.03);
-  }
-  
-  /* Secondary = Sign Up button */
-  .btn-secondary {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .btn-secondary:hover {
-    transform: scale(1.03);
-  }
-  
-  /* Hero Image */
-  .hero-image img {
-    width: 400px;    /* Adjust as needed */
-    max-width: 100%; /* Responsive */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Responsive Layout */
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .hero-image {
-      margin-top: 30px;
-    }
-  }
-  
+}
