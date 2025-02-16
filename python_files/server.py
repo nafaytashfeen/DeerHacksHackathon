@@ -3,6 +3,7 @@ import requests
 
 from user_database import check_info, insert_user, read_user_data
 from post_database import insert_posting, search, read_all_posting_data
+from random import random
 
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -94,7 +95,20 @@ def get_postings():
         }
         for row in postings
     ]
-    return jsonify(formatted_postings)
+
+
+    i = min(12, len(formatted_postings)) // 4 * 4
+
+    new_postings = []
+
+    while i > 0:
+        num = random.randint(0,len(formatted_postings))
+        if not formatted_postings[num] in new_postings:
+            new_postings += [formatted_postings[num]]
+            i -= 1
+
+
+    return jsonify(new_postings)
 
 
 @app.route("/create_post.html")
