@@ -112,19 +112,89 @@ def search(skill_wanted, skills_to_sell):
     cursor = connection.cursor()
     cursor.execute('''SELECT * FROM postings where skills_being_sold = ?;''', (skill_wanted,))  
     rows = cursor.fetchall()
-    print(rows)
-    print(skills_to_sell)
 
     for row in rows: # additionally filter so that the user only sees postings he has skills he can trade for with
-        print(row[4])
         if row[4].lower() not in skills_to_sell: #row[4] = what the poster of this posting wants
             rows.remove(row)
+    arr = []
+    for row in rows:
+        arr += [fix_arrs(row)]
+
+    return arr
+
+def fix_arrs(fetched):
+    dic = {}
+    dic["postId"] = fetched[0]
+    dic["postOwner"] = fetched[1]
+    dic["title"] = fetched[2]
+    dic["skills_being_sold"] = fetched[3]
+    dic["skills_wanted"] = fetched[4]
+    dic["descript_learn"] = fetched[5]
+    dic["descript_teach"] = fetched[6]
+    dic["current_date"] = fetched[7]
+    dic["image"] = fetched[8]
+    return dic
 
 
-    return rows
-
-
-    
 
 
 
+
+sample_data_list = [
+{
+    "postOwner": "alex99",
+    "title": "Seeking Coding Guidance",
+    "skills_being_sold": "Python",
+    "skills_wanted": "Ai",
+    "descript_learn": "I want to improve my ability to manage software projects efficiently.",
+    "descript_teach": "I can help with Python scripting and basic ML concepts.",
+    "image": None
+},
+{
+    "postOwner": "jane_doe",
+    "title": "Graphic Design Exchange",
+    "skills_being_sold": "Python",
+    "skills_wanted": "UI/UX Design",
+    "descript_learn": "I'm interested in learning how to design user-friendly interfaces.",
+    "descript_teach": "I have experience in photo editing and branding.",
+    "image": "jane_profile.jpg"
+},
+{
+    "postOwner": "tech_guru",
+    "title": "Blockchain for AI Knowledge Swap",
+    "skills_being_sold": "Blockchain Development",
+    "skills_wanted": "Python",
+    "descript_learn": "I want to understand how AI models work and how they can integrate with blockchain.",
+    "descript_teach": "I have hands-on experience with Ethereum smart contracts and Solidity.",
+    "image": None
+},
+{
+    "postOwner": "chris_dev",
+    "title": "Frontend-Backend Skill Exchange",
+    "skills_being_sold": "Python",
+    "skills_wanted": "Node.js",
+    "descript_learn": "I want to build full-stack applications and improve my backend skills.",
+    "descript_teach": "I can teach frontend development with React, Redux, and Tailwind CSS.",
+    "image": "chris_avatar.png"
+},
+{
+    "postOwner": "mary_craft",
+    "title": "Video Editing & Marketing Swap",
+    "skills_being_sold": "Video Editing, Premiere Pro",
+    "skills_wanted": "Digital Marketing",
+    "descript_learn": "I want to understand digital marketing strategies for social media.",
+    "descript_teach": "I can help with video editing, transitions, and effects.",
+    "image": None
+}
+]
+
+
+
+create_post_database()
+# for i in sample_data_list:
+#     insert_posting(i)
+
+
+# for i in read_all_posting_data():
+#     print(i)
+print(search("Python", ["node.js", "ai", "gaming"]))
