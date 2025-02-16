@@ -114,8 +114,9 @@ def search(skill_wanted, skills_to_sell):
     rows = cursor.fetchall()
 
     for row in rows: # additionally filter so that the user only sees postings he has skills he can trade for with
-        if row[4].lower() not in skills_to_sell: #row[4] = what the poster of this posting wants
-            rows.remove(row)
+       for skill in skills_to_sell:
+           if row[4].lower() != skill.lower(): #row[4] = what the poster of this posting wants
+               rows.remove(row)
     arr = []
     for row in rows:
         arr += [fix_arrs(row)]
@@ -187,3 +188,13 @@ sample_data_list = [
     "image": None
 }
 ]
+
+dict = {
+    "postOwner": "test",
+    "title": "test",
+    "skills_being_sold": "Fishing",
+    "skills_wanted": "Arabic",
+    "descript_learn": "I want to understand digital marketing strategies for social media.",
+    "descript_teach": "I can help with video editing, transitions, and effects.",
+    "image": None
+}
