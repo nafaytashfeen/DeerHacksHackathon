@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const skillsToLearn = document.querySelector(".skills-to-learn").value.trim();
         const skillsToTeach = document.querySelector(".skills-to-teach").value.trim();
         const dropdownWant = document.getElementById("dropdown-want").value;
-        const dropdownTeach = [document.getElementById("dropdown-teach").value];
+        const dropdownTeach = document.getElementById("dropdown-teach").value;
 
         // Basic validation: ensure required fields are filled
         if (!title || !skillsToLearn || !skillsToTeach || !dropdownWant || !dropdownTeach) {
@@ -97,17 +97,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        const postOwner = sessionStorage.getItem("username") || "Guest";
+
         // Build the data object to send to the backend
         const postData = {
-            title: title,
-            post: sessionStorage.getItem("username"), // Static poster name
-            image: uploadedImageBase64, // The Base64 image data (if any)
-            skillsToLearn: descript_learn,
-            skillsToTeach: descript_teach,
-            skills_wanted: dropdownWant, // category
-            skills_being_sold: dropdownTeach, // tag
+            "title": title,
+            "postOwner": postOwner, // Static poster name
+            "image": uploadedImageBase64, // The Base64 image data (if any)
+            "descript_learn": skillsToLearn,
+            "descript_teach": skillsToTeach,
+            "skills_wanted": dropdownWant, // category
+            "skills_being_sold": dropdownTeach, // tag
             // Additional fields (e.g., timestamp) can be added here as needed
         };
+        console.log(postData)
 
         // Send the data to the backend using fetch
         fetch("/create_post", {

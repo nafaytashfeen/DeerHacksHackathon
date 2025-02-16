@@ -69,12 +69,13 @@ def handle_signup():
 def handle_post_creation():
     data = request.json
     result = insert_posting(data)
+    print(result)
     if not result:
         return jsonify({"message": "Unable to create post", "success": False})
     if result[0]:
         return jsonify({"message": "Post created successfully", 'success': True})
     else:
-        return jsonify({"message": "Post does not exist", "sucess": False})
+        return jsonify({"message": "Post does not exist", "success": False})
 
 
 @app.route("/create_post.html")

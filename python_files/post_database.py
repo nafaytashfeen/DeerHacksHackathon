@@ -26,13 +26,14 @@ def create_post_database():
 
 def insert_posting(data):
     """
-    returns a tuple where the first element is the boolean regarding whether the user was succesfully added
-    the second element will contain metadata such as "success", "email exists", "usernam exists"
+    Returns a tuple where the first element is a boolean indicating whether the post was successfully added.
+    The second element contains metadata such as "success", "invalid credentials", or error messages.
     """
     connection = sqlite3.connect("post_database.db")
     cursor = connection.cursor()
-    # post id is auto inserted
-    postOwner = data['postOwener'] #string 'postOwner is a kew in the json'
+
+    # Extract data from the input dictionary
+    postOwner = data["postOwner"]
     title = data["title"]
     skills_being_sold = data["skills_being_sold"]
     skills_wanted = data["skills_wanted"]
@@ -41,10 +42,18 @@ def insert_posting(data):
     current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     image = data["image"]
 
-    if not(postOwner and title and skills_being_sold and skills_wanted and descriptLearn and descriptTeach and current_date):
+    # Validate that all required fields are present
+    if not (postOwner and title and skills_being_sold and skills_wanted and descriptLearn and descriptTeach and current_date):
         return (False, "Invalid credentials")
+
     try:
-        cursor.execute("INSERT INTO postings VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)", (postOwner, title, skills_being_sold, skills_wanted, descriptLearn, descriptTeach, current_date, image))
+        # Insert the data into the database
+        cursor.execute("""
+            INSERT INTO postings (postOwner, title, skills_being_sold, skills_wanted, 
+                                  descriptLearn, descriptTeach, date, image) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""", 
+            (postOwner, title, skills_being_sold, skills_wanted, descriptLearn, descriptTeach, current_date, image))
+
         connection.commit()
         return (True, "success")
     except sqlite3.IntegrityError as e:
@@ -52,11 +61,9 @@ def insert_posting(data):
         if "UNIQUE constraint failed: postings.postId" in error_message:
             return (False, "post already exists")
         else:
-            return (False, "cooked, bud, you not your code")
-
+            return (False, f"Database error: {error_message}")
     finally:
         connection.close()
-
 
 def read_posting_data(id: str):
     """
@@ -105,22 +112,4 @@ def delete_postings(id:str):
     
 
 
-
-#### TESTING FUNCTIONALITY ####
-
-sample_data = {
-    "postId": "1",
-    "postOwener": "diddy",  # Note the key matches the provided typo "postOwener"
-    "title": "Looking for a Mentor",
-    "skills_being_sold": "Web Development",
-    "skills_wanted": "Graphic Design",
-    "descript_learn": "I want to learn about the latest design trends.",
-    "descript_teach": "I can teach HTML, CSS, and JavaScript.",
-    "image": None
-}
-
-
-create_post_database()
-print(read_posting_data("1"))
-# print(read_all_posting_data())
 
