@@ -19,10 +19,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/get_postings")
+        .then(response => response.json())
+        .then(data => {
+            const postingsContainer = document.getElementsByClassName("postings")[0]; // Ensure this div exists in your HTML
+            // postingsContainer.innerHTML = "";
+
+            data.forEach(post => {
+                const postElement = document.createElement("div");
+                postElement.classList.add("posting"); // Assign class directly
+
+                postElement.innerHTML = `
+                    <!-- Skills at the top -->
+                    <div class="desired-skills">
+                    <span class="skill-badge">${post.skills_wanted}</span>
+                        
+                    </div>
+
+                    <!-- Posting Title -->
+                    <h3 class="posting-title">${post.title}</h3>
+
+                    <!-- Large Picture -->
+                    ${post.image ? `<img src="${post.image}" alt="User's Skill Image" />` : ""}
+
+                    <!-- Description -->
+                    <p class="description">
+                        ${post.descript_learn}
+                    </p>
+
+                    <!-- Username at the bottom -->
+                    <div class="footer-info">
+                        <p class="username">${post.postOwner}</p>
+                    </div>
+                `;
+
+                postingsContainer.appendChild(postElement);
+            });
+        })
+        .catch(error => console.error("Error fetching postings:", error));
+});
 
 // If the user clicks on any of the categories, simulate a search for a skill using that category
 document.querySelectorAll(".category").forEach(category => {
-    category.addEventListener("click", function() {
+    category.addEventListener("click", function () {
         const searchBar = document.querySelector("#search-bar input");
         searchBar.value = this.textContent; // Set search bar value to clicked category
         let data = getResults(); // Call the function that fetches and displays results
@@ -32,7 +72,7 @@ document.querySelectorAll(".category").forEach(category => {
 
 
 // if the user presses enter on the search bar
-document.getElementById("search-bar").addEventListener("keydown", function(event){
+document.getElementById("search-bar").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         event.preventDefault(); // Prevent form submission (if inside a form)
         let data = get_results(); // get the results
@@ -40,9 +80,9 @@ document.getElementById("search-bar").addEventListener("keydown", function(event
     }
 });
 
-function get_results(){
+function get_results() {
     let search_value = document.querySelector("#search-bar input").value;
-    if (search_value === "" || search_value === " "){
+    if (search_value === "" || search_value === " ") {
         alert("Please enter a skill you want to learn");
     }
     let skill_set = JSON.parse(sessionStorage.getItem("skill_set"));
@@ -59,26 +99,26 @@ function get_results(){
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            return data;
-        } else {
-            alert("Error: " + data.message);
-        }
-    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                return data;
+            } else {
+                alert("Error: " + data.message);
+            }
+        })
 
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Something went wrong. Please try again.");
-    });
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
+        });
 }
 
 /**
  * A function that displays the posting divs for the results
  * @param {*} results 
  */
-function displayResults(results){
+function displayResults(results) {
     const postingsSection = document.querySelector(".postings");
     postingsSection.innerHTML = ""; // Clear previous results
 
