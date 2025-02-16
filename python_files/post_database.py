@@ -114,9 +114,8 @@ def search(skill_wanted, skills_to_sell):
     rows = cursor.fetchall()
 
     for row in rows: # additionally filter so that the user only sees postings he has skills he can trade for with
-       for skill in skills_to_sell:
-           if row[4].lower() != skill.lower(): #row[4] = what the poster of this posting wants
-               rows.remove(row)
+        if row[4].lower() not in skills_to_sell: #row[4] = what the poster of this posting wants
+            rows.remove(row)
     arr = []
     for row in rows:
         arr += [fix_arrs(row)]
