@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // If the user clicks on any of the categories, simulate a search for a skill using that category
 document.querySelectorAll(".category").forEach(category => {
-    category.addEventListener("click", function () {
+    category.addEventListener("click", async function () {
         const searchBar = document.querySelector("#search-bar input");
         searchBar.value = this.textContent; // Set search bar value to clicked category
-        let data = get_results(); // Call the function that fetches and displays results
+        let data = await get_results(); // Call the function that fetches and displays results
         displayResults(data);
     });
 });
