@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         document.getElementById("SkillsIWant").textContent = post.descript_learn;
-        document.getElementById("SkillsIWant").textContent = post.descript_teach;
+        document.getElementById("SkillsToTeach").textContent = post.descript_teach;
 
 
 
