@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, jsonify
 import requests
 
 from user_database import check_info, insert_user, read_user_data
-from post_database import insert_posting, search, read_all_posting_data
+from post_database import insert_posting, search, read_all_posting_data, read_posting_data
 from random import random
 
 
@@ -120,6 +120,13 @@ def handle_search():
 @app.route("/posting_page.html")
 def posing_page():
     return render_template("posting_page.html")
+
+@app.route('/get_post/<post_id>', methods=['GET'])
+def get_post(post_id):
+    post = read_posting_data(post_id)
+    if post:
+        return jsonify(post)
+    return jsonify({"error": "Post not found"}), 404
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
