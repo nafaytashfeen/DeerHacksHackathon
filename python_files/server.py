@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, jsonify
 import requests
 
 from user_database import check_info, insert_user, read_user_data
-from post_database import insert_posting, search
+from post_database import insert_posting, search, read_all_posting_data
 
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -76,6 +76,25 @@ def handle_post_creation():
         return jsonify({"message": "Post created successfully", 'success': True})
     else:
         return jsonify({"message": "Post does not exist", "success": False})
+    
+@app.route('/get_postings', methods=['GET'])
+def get_postings():
+    postings = read_all_posting_data()
+    formatted_postings = [
+        {
+            "postId": row[0],
+            "postOwner": row[1],
+            "title": row[2],
+            "skills_being_sold": row[3],
+            "skills_wanted": row[4],
+            "descript_learn": row[5],
+            "descript_teach": row[6],
+            "date": row[7],
+            "image": row[8],
+        }
+        for row in postings
+    ]
+    return jsonify(formatted_postings)
 
 
 @app.route("/create_post.html")
