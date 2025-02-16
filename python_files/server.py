@@ -89,5 +89,9 @@ def skillset():
 def handle_search():
     pass
 
+@app.route("/posting_page.html")
+def posing_page():
+    return render_template("posting_page.html")
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
