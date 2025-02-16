@@ -39,10 +39,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.querySelector(".post-image").src = post.image;
             document.querySelector(".post-image").style.display = "block";
         } else {
-            document.querySelector(".post-image").style.display = "none";
+            document.querySelector(".post-image").src = "../static/images/skills.webp"
+            document.querySelector(".post-image").style.display = "block";
         }
 
-        document.querySelector(".post-description").textContent = post.descript_learn;
+        document.getElementById("SkillsIWant").textContent = post.descript_learn;
+        document.getElementById("SkillsIWant").textContent = post.descript_teach;
+
+
 
     } catch (error) {
         document.body.innerHTML = `<h2>${error.message}</h2>`;

@@ -13,7 +13,7 @@
 <body>
     <!-- ===== Header (reused) ===== -->
     <header>
-        <div class="logo">SkillSwap</div>
+        <div class="logo" onclick="window.location.href='/index.html'" style="cursor: pointer;">SkillSwap</div>
         <nav class="nav-actions">
             <p class="signed-in-text" id="signed-in-text"></p> <!-- Placeholder for Signed-in User -->
             <a href="#">Add Listing</a>
@@ -39,13 +39,13 @@
 
             <!-- Description -->
             <h3>Skills I want to learn</h3>
-            <p class="post-description">
+            <p class="post-description" id="SkillsIWant">
                 I want to learn Python basics, data structures, and even web development.
                 In exchange, I’d love to learn how to cook vegetarian dishes or practice Spanish.
             </p>
 
             <h3>Skills I can teach</h3>
-            <p class="post-description">
+            <p class="post-description" id="SkillsToTeach">
                 I can teach Python basics, data structures, and web development.
                 In exchange, I’d love to learn how to cook vegetarian dishes or practice Spanish.
             </p>

@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             data.forEach(post => {
                 const postElement = document.createElement("div");
-                postElement.classList.add("posting"); 
+                postElement.classList.add("posting");
                 postElement.setAttribute('data-post-id', post.postId);
-            
+
                 postElement.innerHTML = `
                     <div class="desired-skills">
-                        <span class="skill-badge">${post.skills_wanted}</span>
+                    <span class="skill-badge">${post.skills_wanted}</span>
                     </div>
                     <h3 class="posting-title">${post.title}</h3>
                     <img src="${post.image || './static/images/skills.webp'}" alt="" />
@@ -42,21 +42,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="username">${post.postOwner}</p>
                     </div>
                 `;
-            
+
                 // Attach click listener immediately after creating the element
                 postElement.addEventListener("click", function () {
                     const postId = this.getAttribute("data-post-id");
                     window.location.href = `posting_page.html?id=${postId}`;
                 });
-            
+
                 postingsContainer.appendChild(postElement);
             });
-            
+
         })
         .catch(error => console.error("Error fetching postings:", error));
 });
 
-  
+
 
 // If the user clicks on any of the categories, simulate a search for a skill using that category
 document.querySelectorAll(".category").forEach(category => {
@@ -70,11 +70,10 @@ document.querySelectorAll(".category").forEach(category => {
 
 
 // if the user presses enter on the search bar
-document.getElementById("search-bar").addEventListener("keydown", async function (event) {
+document.getElementById("search-bar").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         event.preventDefault(); // Prevent form submission (if inside a form)
-        let data = await get_results(); // get the results
-        console.log("this is an array:" + data)
+        let data = get_results(); // get the results
         displayResults(data);
     }
 });
@@ -160,7 +159,7 @@ function displayResults(results) {
                 </div>
             `;
 
-                        
+
             // Attach click listener immediately after creating the element
             postElement.addEventListener("click", function () {
                 const postId = this.getAttribute("data-post-id");
