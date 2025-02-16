@@ -207,6 +207,16 @@ main {
     width: 100%;
     text-align: left;
     margin-bottom: 1rem;
+    
+    /* Hide overflow and enable ellipsis */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* The magic: use a “clamped” box for multiple lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  /* number of lines to show before cutting off */
+    -webkit-box-orient: vertical;
+
   }
   
   /* Divider between description and footer */

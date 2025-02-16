@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Send the data to the backend using fetch
-        fetch("http://127.0.0.1:5001/create_post", {
+        fetch("/create_post", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

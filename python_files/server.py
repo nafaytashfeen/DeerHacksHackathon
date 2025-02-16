@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, jsonify
 import requests
 
 from user_database import check_info, insert_user, read_user_data
+from post_database import insert_posting
 
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -59,11 +60,23 @@ def handle_signup():
         return jsonify({"message": "User was unable to sign up successfully", 'success': False, 'name': None, "skills": None})
     if dumped_data[0]:
         name = data['username']
-        
         return jsonify({"message": "User signed up successfully", 'success': True, 'name': name, "skills": data["skills"]})
     else:
         return jsonify({"message": dumped_data[1], 'success': False, 'name': None, "skills": None})
-    
+
+
+@app.route("/create_post", methods=["POST"])
+def handle_post_creation():
+    data = request.json
+    result = insert_posting(data)
+    if not result:
+        return jsonify({"message": "Unable to create post", "success": False})
+    if result[0]:
+        return jsonify({"message": "Post created successfully", 'success': True})
+    else:
+        return jsonify({"message": "Post does not exist", "sucess": False})
+
+
 @app.route("/create_post.html")
 def create_post():
     return render_template("create_post.html")
