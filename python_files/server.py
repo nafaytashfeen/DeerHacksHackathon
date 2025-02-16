@@ -97,17 +97,6 @@ def get_postings():
     ]
 
 
-    # i = min(12, len(formatted_postings)) // 4 * 4
-
-    # new_postings = []
-
-    # while i > 0:
-    #     num = random.randint(0,len(formatted_postings))
-    #     if not formatted_postings[num] in new_postings:
-    #         new_postings += [formatted_postings[num]]
-    #         i -= 1
-
-
     return jsonify(formatted_postings[0:20])
 
 
