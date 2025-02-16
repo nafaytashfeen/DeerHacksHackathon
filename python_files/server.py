@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, jsonify
 import requests
 
 from user_database import check_info, insert_user, read_user_data
-from post_database import insert_posting
+from post_database import insert_posting, search
 
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -88,7 +88,14 @@ def skillset():
 
 @app.route("/index")
 def handle_search():
-    pass
+    data = request.json
+
+    if not(data["search"] and data["skill_set"]):
+        return jsonify({"data": []})
+
+    return jsonify({"data": search(data["search"], data["skill_set"])})
+
+    
 
 @app.route("/posting_page.html")
 def posing_page():
