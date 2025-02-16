@@ -63,7 +63,7 @@ document.querySelectorAll(".category").forEach(category => {
     category.addEventListener("click", function () {
         const searchBar = document.querySelector("#search-bar input");
         searchBar.value = this.textContent; // Set search bar value to clicked category
-        let data = getResults(); // Call the function that fetches and displays results
+        let data = get_results(); // Call the function that fetches and displays results
         displayResults(data);
     });
 });

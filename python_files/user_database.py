@@ -108,25 +108,3 @@ def check_info(data):
     
 
 
-
-#### TESTING FUNCTIONALITY ####
-
-data = {"username": "diddy", "email": "123@gmail.com", "password": "teehee", "skills": ["python", "english"]}
-
-data2 = {"username": "diddy", "email": "123@gmail.com", "password": "teehee", "skills": ["python", "english"]}
-
-create_user_database()
-
-# print(insert_user(data))
-# print(insert_user(data2))
-
-# l = read_user_data("diddy")
-# print(l)
-
-
-
-# print(read_user_data("diddy"))
-# print("\n")
-# delete_user("diddy")
-# print(read_all_user_data())
-

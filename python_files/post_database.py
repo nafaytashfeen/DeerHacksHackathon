@@ -187,7 +187,3 @@ sample_data_list = [
     "image": None
 }
 ]
-
-
-
-create_post_database()
