@@ -28,37 +28,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
             data.forEach(post => {
                 const postElement = document.createElement("div");
-                postElement.classList.add("posting"); // Assign class directly
-
+                postElement.classList.add("posting"); 
+                postElement.setAttribute('data-post-id', post.postId);
+            
                 postElement.innerHTML = `
-                    <!-- Skills at the top -->
                     <div class="desired-skills">
-                    <span class="skill-badge">${post.skills_wanted}</span>
-                        
+                        <span class="skill-badge">${post.skills_wanted}</span>
                     </div>
-
-                    <!-- Posting Title -->
                     <h3 class="posting-title">${post.title}</h3>
-
-                    <!-- Large Picture -->
-                    ${post.image ? `<img src="${post.image}" alt="User's Skill Image" />` : ""}
-
-                    <!-- Description -->
-                    <p class="description">
-                        ${post.descript_learn}
-                    </p>
-
-                    <!-- Username at the bottom -->
+                    <img src="${post.image || './static/images/skills.webp'}" alt="" />
+                    <p class="description">${post.descript_learn}</p>
                     <div class="footer-info">
                         <p class="username">${post.postOwner}</p>
                     </div>
                 `;
-
+            
+                // Attach click listener immediately after creating the element
+                postElement.addEventListener("click", function () {
+                    const postId = this.getAttribute("data-post-id");
+                    window.location.href = `posting_page.html?id=${postId}`;
+                });
+            
                 postingsContainer.appendChild(postElement);
             });
+            
         })
         .catch(error => console.error("Error fetching postings:", error));
 });
+
+  
 
 // If the user clicks on any of the categories, simulate a search for a skill using that category
 document.querySelectorAll(".category").forEach(category => {
@@ -72,10 +70,11 @@ document.querySelectorAll(".category").forEach(category => {
 
 
 // if the user presses enter on the search bar
-document.getElementById("search-bar").addEventListener("keydown", function (event) {
+document.getElementById("search-bar").addEventListener("keydown", async function (event) {
     if (event.key === "Enter") {
         event.preventDefault(); // Prevent form submission (if inside a form)
-        let data = get_results(); // get the results
+        let data = await get_results(); // get the results
+        console.log("this is an array:" + data)
         displayResults(data);
     }
 });
@@ -104,6 +103,7 @@ async function get_results() {
         });
 
         const data = await response.json();
+        console.log(data.success)
         if (data.success) {
             console.log(data["data"])
             return data["data"]; // Return the actual data to be used later
@@ -128,24 +128,37 @@ function displayResults(results) {
     postingsSection.innerHTML = ""; // Clear previous results
 
     if (Array.isArray(results)) {
+        console.log("hi + " + results)
 
         results.forEach(result => {
-            const postingDiv = document.createElement("div");
-            postingDiv.classList.add("posting");
+            const postElement = document.createElement("div");
+            postElement.classList.add("posting"); // Assign class directly
 
-            postingDiv.innerHTML = `
+            postElement.innerHTML = `
+                <!-- Skills at the top -->
                 <div class="desired-skills">
-                    <span class="skill-badge">${result.skills_being_sold}</span>
+                <span class="skill-badge">${result.skills_wanted}</span>
+                    
                 </div>
+
+                <!-- Posting Title -->
                 <h3 class="posting-title">${result.title}</h3>
-                <img src="data:image/png;base64,${result.image}" alt="./static/images/skills.webp" />
-                <p class="description">${result.descript_teach}</p>
+
+                <!-- Large Picture -->
+                <img src="${result.image || './static/images/skills.webp'}" alt="" />
+
+                <!-- Description -->
+                <p class="description">
+                    ${result.descript_learn}
+                </p>
+
+                <!-- Username at the bottom -->
                 <div class="footer-info">
                     <p class="username">${result.postOwner}</p>
                 </div>
             `;
 
-            postingsSection.appendChild(postingDiv);
+            postingsSection.appendChild(postElement);
         });
 
     }
