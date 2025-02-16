@@ -134,6 +134,8 @@ function displayResults(results) {
             const postElement = document.createElement("div");
             postElement.classList.add("posting"); // Assign class directly
 
+            postElement.setAttribute('data-post-id', result.postId);
+
             postElement.innerHTML = `
                 <!-- Skills at the top -->
                 <div class="desired-skills">
