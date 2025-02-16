@@ -13,11 +13,11 @@ def create_post_database():
                 postId INTEGER PRIMARY KEY AUTOINCREMENT,
                 postOwner VARCHAR(50),
                 title TEXT,
-                date TEXT,
                 skills_being_sold TEXT, -- compressed array
                 skills_wanted TEXT,
                 descriptLearn TEXT, 
                 descriptTeach TEXT,
+                date TEXT,
                 image TEXT
             );
         ''')
