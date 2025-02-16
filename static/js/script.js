@@ -88,7 +88,7 @@ function displayResults(results){
 
         postingDiv.innerHTML = `
             <div class="desired-skills">
-                ${result.skills.map(skill => `<span class="skill-badge">${skill}</span>`).join("")}
+                <span class="skill-badge">${result.skills_being_sold}</span>
             </div>
             <h3 class="posting-title">${result.title}</h3>
             <img src="data:image/png;base64,${result.image}" alt="./static/images/skills.webp" />
