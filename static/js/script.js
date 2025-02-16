@@ -70,10 +70,10 @@ document.querySelectorAll(".category").forEach(category => {
 
 
 // if the user presses enter on the search bar
-document.getElementById("search-bar").addEventListener("keydown", function (event) {
+document.getElementById("search-bar").addEventListener("keydown", async function (event) {
     if (event.key === "Enter") {
         event.preventDefault(); // Prevent form submission (if inside a form)
-        let data = get_results(); // get the results
+        let data = await get_results(); // get the results
         displayResults(data);
     }
 });
