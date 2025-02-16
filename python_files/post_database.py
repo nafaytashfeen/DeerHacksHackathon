@@ -106,7 +106,22 @@ def delete_postings(id:str):
     cursor.execute('''DELETE FROM postings WHERE postId = ?;''', (id,))
     connection.commit()
     connection.close()
+    
+def search(skill_wanted, skills_to_sell):
+    connection = sqlite3.connect("post_database.db")
+    cursor = connection.cursor()
+    cursor.execute('''SELECT * FROM postings where skills_being_sold = ?;''', (skill_wanted,))  
+    rows = cursor.fetchall()
+    print(rows)
+    print(skills_to_sell)
 
+    for row in rows: # additionally filter so that the user only sees postings he has skills he can trade for with
+        print(row[4])
+        if row[4].lower() not in skills_to_sell: #row[4] = what the poster of this posting wants
+            rows.remove(row)
+
+
+    return rows
 
 
     
