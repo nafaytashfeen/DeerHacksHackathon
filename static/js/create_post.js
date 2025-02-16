@@ -1,3 +1,31 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const skillSet = JSON.parse(sessionStorage.getItem("skill_set")); // Retrieve user's skills from sessionStorage
+    const dropdownTeach = document.getElementById("dropdown-teach");
+
+    if (skillSet && skillSet.length > 0) {
+        // Clear existing options
+        dropdownTeach.innerHTML = "";
+
+        // Add a default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select a skill";
+        dropdownTeach.appendChild(defaultOption);
+
+        // Populate dropdown with user's skills
+        skillSet.forEach(skill => {
+            const option = document.createElement("option");
+            option.value = skill;
+            option.textContent = skill;
+            dropdownTeach.appendChild(option);
+        });
+    } else {
+        // If no skills are found, disable the dropdown
+        dropdownTeach.innerHTML = '<option value="">No skills available</option>';
+        dropdownTeach.disabled = true;
+    }
+});
+
 document.getElementById('post-image-upload').addEventListener('change', function (event) {
     const file = event.target.files[0];
     if (file) {
@@ -74,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
             title: title,
             poster: sessionStorage.getItem("username"), // Static poster name
             image: uploadedImageBase64, // The Base64 image data (if any)
-            skillsToLearn: skillsToLearn,  
+            skillsToLearn: skillsToLearn,
             skillsToTeach: skillsToTeach,
             desiredSkill: dropdownWant, // category
             teachSkill: dropdownTeach, // tag
@@ -94,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.success) {
                     alert("Post created successfully!");
                     // Optionally, store data or redirect to a success page
-                    window.location.href = "/post_success.html"; // Example redirect
+                    window.location.href = "/index.html";
                 } else {
                     alert("Error: " + data.message);
                 }
